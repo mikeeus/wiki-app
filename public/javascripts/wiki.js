@@ -14,13 +14,11 @@ var searchResults = {
 var search = _.debounce( function() {
   input = $("#search-input")[0].value;
   if(input.length > 2){
-    console.log(input);
     $.ajax({
       url: 'http://en.wikipedia.org/w/api.php',
       data: { action: 'query', list: 'search', srsearch: input, format: 'json' },
       dataType: 'jsonp',
       success: function (res) {
-        console.log(res)
         searchResults.results = res.query.search;
       }
     });
@@ -28,7 +26,6 @@ var search = _.debounce( function() {
 }, 500);
 
 function goToLink(params){
-  console.log('params: ', params.text);
   window.location.href = "http://en.wikipedia.org/wiki/" + params.text.trim();
 }
 

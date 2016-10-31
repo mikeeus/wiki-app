@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=UTF-8>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wiki App</title>
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/underscore-min.js"></script>
+  <script type="text/javascript" src="/js/rivets.bundled.min.js"></script>  
+  <script type="text/javascript" src="/javascripts/wiki.js"></script>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootflat/2.0.4/css/bootflat.css">
+    
+</head>
+<body>
+
+  <div class="jumbotron text-center">
+    <h1>Wiki-App</h1>
+    <p>Search wikipedia!</p>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <!--link to random article-->
+      <a class="btn btn-primary"
+        href="https://en.wikipedia.org/wiki/Special:Random"
+        target="_blank">Random Wikipedia article!</a>
+    </div>
+
+    <div class="searchbar col-sm-9">
+      <!--searchbox-->
+      <div class="input-group form-search">
+        <input id="search-input" type="text" class="form-control search-query" onkeyup="search()">
+        <span class="input-group-btn">
+          <!--onclick="search()"-->
+          <button type="submit" class="btn btn-primary" data-type="last">Search</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!--search results-->
+  <div id="search-results" class="col-sm-8 col-sm-offset-2">
+    <div class="list-group" rv-each-result="searchResults.results">
+      <div class="list-group-item">
+        <a class="result-link" href="#" onclick="goToLink(this)">
+          { result.title }
+        </a> 
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
